@@ -1,0 +1,10 @@
+# macOS attributes
+.DS_Store
+
+# Python
+*.pyc
+__pycache__/
+
+# Virtual environment
+.venv/
+venv/
