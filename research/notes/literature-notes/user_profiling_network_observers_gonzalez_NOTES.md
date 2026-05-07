@@ -39,7 +39,10 @@ Check if network observers (ISPs/VPNs) can profile users despite TLS encryption.
 ### Metric
 - CTR (Click-Through Rate) used as proxy for profile accuracy
 
-## Related Work — Meaningful insights
+---
+# Meaningful insights
+
+## Related Work
 
 ### How tracking/profiling normally works
 Most systems:
@@ -55,8 +58,56 @@ Most systems:
 > *applications related to news and children are among the most privacy-invasive ones.*
 
 ### Question
-> Traditional user profiling relies on large amounts of data.
-> What can be inferred using only minimal information, such as hostnames?
+> *Traditional user profiling relies on large amounts of data.*
+> *What can be inferred using only minimal information, such as hostnames?*
+
+---
+
+## Background
+
+### Not all ads are the same
+- **Premium** (served to all users visiting a given website within a time-frame) vs. **programmatic** ads (served by taking into account the profile, based on recent browsing history, demographic, or topic of the website)
+
+---
+
+## User profiling using hostnames
+- Treat hostnames like words in a sentence
+- Words gain meaning from surrounding words
+- Hostnames gain meaning from surrounding hostnames
+
+> *(If domains frequently appear together in browsing sessions,*
+> *they are likely semantically related.)*
+
+### Key
+Instead of understanding website content directly,
+the system learns relationships between domains from browsing patterns.
+
+---
+
+## Relevant ad selection
+- Model retrained daily, using hostname sequences from the previous day
+- Profiles built from the last 20 minutes of browsing activity
+
+> *This value was empirically tested as a good trade-off between very short*
+> *sessions that may led to non meaningful profiles and very long ones*
+> *that may include topics that are not relevant anymore for the user.*
+
+---
+
+## User diversity
+- Common hostnames are separated as background noise
+- Certaing categories and hostnames do not offer a profiling value
+
+> *If all users visit the same set of hostnames, then*
+> *browsing habit is probably not a good discriminant for user interests.*
+
+---
+
+## CTR
+
+> *Ads served by our system show a*
+> *CTR of 0.217% whereas ads served by ad-networks have a CTR of*
+> *0.168%.*
 
 
 
